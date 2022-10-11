@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns:model="clr-namespace:MauiApp4.Model"         
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.MainPage">
+    <VerticalStackLayout>
+        <CollectionView>
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>"123"</x:String>
+                    <x:String>"123"</x:String>
+                    <x:String>"123"</x:String>
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        <Image Source="{Binding .}"></Image>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding .}"></Label>
+                            <Label Text="{Binding .}"></Label>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <CarouselView ItemsSource="{Binding Users}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="model:Users">
+                    <HorizontalStackLayout>
+                        <Image Source="{Binding Source}"></Image>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}"></Label>
+                            <Label Text="{Binding Id}"></Label>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <Button Clicked="newElement" Text="New Element"></Button>
+    </VerticalStackLayout>
+</ContentPage>
